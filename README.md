@@ -245,7 +245,7 @@ spinnerClass: 'piano-spinner'
 ```
 
 #### Bubbling spinner
-, define the spinnerClass as piano-spinner. Example
+Inside the plugin settings, define the spinnerClass as piano-spinner. Example
 ```
 spinnerClass: 'bubbling-spinner'
 ```
