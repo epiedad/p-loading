@@ -1,0 +1,37 @@
+{
+    "name": "ploading",
+    "version": "1.0.0",
+    "title": "P-Loading Plugin",
+    "author": {
+        "name": "Jose Zuniga Marin",
+        "email": "jose_zuma@hotmail.com",
+        "url": "https://github.com/joseshiru"
+    },
+    "licenses": [
+        {
+            "type": "MIT",
+            "url": "https://raw.githubusercontent.com/joseshiru/p-loading/master/LICENSE"
+        }
+    ],
+    "dependencies": {
+        "jquery": "1.6.0"
+    },
+    "description": "A powerful, and intuitive jQuery plugin, for faster and easier web development, which allows you to include an elegant responsive loading mask with many options of how to customize it.",
+    "keywords": [
+        "loading",
+        "mask",
+        "ajax",
+        "wait"
+    ],
+    "homepage": "https://github.com/joseshiru/p-loading",
+    "docs": "https://github.com/joseshiru/p-loading/blob/master/DOCUMENTATION.md",
+    "download": "https://github.com/joseshiru/p-loading",
+    "bugs": "https://github.com/joseshiru/p-loading/issues",
+    "maintainers": [
+        {
+            "name": "Jose Zuniga Marin",
+            "email": "jose_zuma@hotmail.com",
+            "url": "https://github.com/joseshiru"
+        }
+    ]
+}
