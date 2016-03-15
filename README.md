@@ -18,7 +18,7 @@ p-loading/
 
 
 ### Documentation
-[https://github.com/joseshiru/p-loading/blob/master/DOCUMENTATION.md](https://github.com/joseshiru/p-loading/blob/master/DOCUMENTATION,md)
+[https://github.com/joseshiru/p-loading/blob/master/DOCUMENTATION.md](https://github.com/joseshiru/p-loading/blob/master/DOCUMENTATION.md)
 
 ### Contributing
   Feel free to contribute.
@@ -27,6 +27,6 @@ p-loading/
  * Thanks to all the contributors.
  * [Jose Zuniga Marin](https://github.com/joseshiru).
  * CSS Loaders https://github.com/lukehaas/css-loaders
+ 
 ### Copyright and license
-
 [MIT License](https://github.com/joseshiru/p-loading/blob/master/LICENSE)
