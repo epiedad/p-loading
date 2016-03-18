@@ -15,8 +15,9 @@ p-loading/
     ├── p-loading.js
     └── p-loading.min.js
 ```
-
-
+### Current version
+	Version: 1.0.1
+	
 ### Documentation
 [https://github.com/joseshiru/p-loading/blob/master/DOCUMENTATION.md](https://github.com/joseshiru/p-loading/blob/master/DOCUMENTATION.md)
 

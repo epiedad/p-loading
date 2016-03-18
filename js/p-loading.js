@@ -1,5 +1,5 @@
 /*!
- * jQuery Plugin P-loading v1.0.0
+ * jQuery Plugin P-loading v1.0.1
  * https://github.com/joseshiru/p-loading/
  *
  * Released under the MIT license
@@ -124,9 +124,10 @@
             pluginPublicAction.show = function () {
                 //Get the container ID of the last plugin's usage in the current element.  
                 var containerId = pluginPrivateAction.utils({action: 'getContainerId'});
+                var containerExist = $(containerId).length === 0 ? false : true;
                 var $container;
 
-                if (containerId) {
+                if (containerId && containerExist) {
                     $container = $('#' + containerId);
                     $container.show();
                 } else {
