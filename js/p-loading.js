@@ -22,10 +22,10 @@
             
             //Param $container is the container of the loading
             defaultHideAnimation = function ($container, $selectedNode) {
-                $container.fadeOut();
+                $container.hide();
             };
             defaultShowAnimation = function ($container, $selectedNode) {
-                $container.fadeIn();
+                $container.show();
             };
 
             //Default settings.
@@ -36,7 +36,7 @@
                 containerClass: 'p-loading-container',           //Container CSS classes
                 spinnerHTML: '<div/>',                           //HTML of the spinner
                 spinnerAttrs: {},                                //Spinner Attributes and custom attributes (class,id,for,etc)
-                spinnerClass: 'p-loading-spinner piano-loader',  //Spinner CSS classes
+                spinnerClass: 'p-loading-spinner piano-spinner', //Spinner CSS classes
                 onShowContainer: undefined,                      //A function to execute when the container get displayed
                 onHideContainer: undefined,                      //A function to execute when the container get hidden
                 onDestroyContainer: undefined,                    //A function to execute when the container is destroyed
