@@ -124,7 +124,7 @@
             pluginPublicAction.show = function () {
                 //Get the container ID of the last plugin's usage in the current element.  
                 var containerId = pluginPrivateAction.utils({action: 'getContainerId'});
-                var containerExist = $(containerId).length === 0 ? false : true;
+                var containerExist = $('#' + containerId).length === 0 ? false : true;
                 var $container;
 
                 if (containerId && containerExist) {
