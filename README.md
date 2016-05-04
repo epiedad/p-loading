@@ -1,4 +1,5 @@
-# P-Loading
+![alt tag](http://i.imgur.com/M9LqM46.png?1 "P-Loading")
+
 P-Loading is a powerful, and intuitive jQuery plugin, for faster and easier web development, created by Jose Zuniga, which allows you to include an elegant responsive loading mask with many options of how to customize it.
 
 >How many projects need a loading mask and how many times we create the same functionality again, and again?
@@ -17,7 +18,10 @@ p-loading/
 ```
 ### Current version
 	Version: 1.0.1
-	
+
+### Website
+[http://joseshiru.github.io/p-loading/](http://joseshiru.github.io/p-loading/)
+
 ### Documentation
 [https://github.com/joseshiru/p-loading/blob/master/DOCUMENTATION.md](https://github.com/joseshiru/p-loading/blob/master/DOCUMENTATION.md)
 
