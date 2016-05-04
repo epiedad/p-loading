@@ -129,7 +129,7 @@
 
                 if (containerId && containerExist) {
                     $container = $('#' + containerId);
-                    $container.show();
+                    settings.showAnimation($container, $pluginElement);
                 } else {
                     pluginPrivateAction.buildPluginMarkup();
                     containerId = pluginPrivateAction.utils({action: 'getContainerId'});
