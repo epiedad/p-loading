@@ -16,7 +16,7 @@
     <!-- Custom styles for this template -->
     <link href="assets/css/style.css" rel="stylesheet">
     <link href="assets/css/font-awesome.min.css" rel="stylesheet">
-    <link href="https://rawgit.com/joseshiru/p-loading/master/css/p-loading.css" rel="stylesheet">
+    <link href="https://rawgit.com/joseshiru/p-loading/master/dist/css/p-loading.css" rel="stylesheet">
 
 
     <!-- Just for debugging purposes. Don't actually copy this line! -->
@@ -242,87 +242,96 @@
 	<script src="assets/js/jquery.prettyPhoto.js"></script>
   	<script src="assets/js/jquery.isotope.min.js"></script>
   	<script src="assets/js/custom.js"></script>
-  <script src="https://rawgit.com/joseshiru/p-loading/master/js/p-loading.js"></script>
+  <script src="https://rawgit.com/joseshiru/p-loading/master/dist/js/p-loading.js"></script>
 
 
     <script>
-// Portfolio
-(function($) {
-	"use strict";
-  var task = {};
-  var action = {};
+    (function($) {
+    	"use strict";
+      var task = {};
+      var action = {};
 
-  task.defineActions = function () {
-    action.setDefaultSpinnerExample = function () {
-      var $exampleCont = $('.default-spinner-example');
-      var $showLoadingBtn =$exampleCont.find('.show-loading');
-      var $hideLoadingBtn =$exampleCont.find('.hide-loading');
-      var $panel = $exampleCont.find('.panel');
+      task.defineActions = function () {
+        action.setDefaultSpinnerExample = function () {
+          var $exampleCont = $('.default-spinner-example');
+          var $showLoadingBtn =$exampleCont.find('.show-loading');
+          var $hideLoadingBtn =$exampleCont.find('.hide-loading');
+          var $panel = $exampleCont.find('.panel');
 
-      $showLoadingBtn.on('click.showLoading', function () {
-        $panel.ploading({action: 'show'});
-      });
+          $showLoadingBtn.on('click.showLoading', function () {
+            $panel.ploading({action: 'show'});
+          });
 
-      $hideLoadingBtn.on('click.showLoading', function () {
-        $panel.ploading({action: 'hide'});
-      });
-    };
-
-    action.setFontAwesometSpinnerExample = function () {
-      var $exampleCont = $('.font-awesome-spinner-example');
-      var $showLoadingBtn =$exampleCont.find('.show-loading');
-      var $hideLoadingBtn =$exampleCont.find('.hide-loading');
-      var $panel = $exampleCont.find('.panel');
-
-      $showLoadingBtn.on('click.showLoading', function () {
-        $panel.ploading({
-          action: 'show',
-          spinnerHTML: '<i></i>',
-          spinnerClass: 'fa fa-spinner fa-spin p-loading-fontawesome'
-        });
-      });
-
-      $hideLoadingBtn.on('click.showLoading', function () {
-        $panel.ploading({action: 'hide'});
-      });
-    };
-
-    action.setCustomizedAnimationExample = function () {
-      var $exampleCont = $('.customized-animations-example');
-      var $showLoadingBtn =$exampleCont.find('.show-loading');
-      var $hideLoadingBtn =$exampleCont.find('.hide-loading');
-      var $panel = $exampleCont.find('.panel');
-
-      $showLoadingBtn.on('click.showLoading', function () {
-        var customAnimation = function ($container, $selectedNode) {
-            $container.fadeIn();
+          $hideLoadingBtn.on('click.showLoading', function () {
+            $panel.ploading({action: 'hide'});
+          });
         };
 
-        $panel.ploading({
-          action: 'show',
-          showAnimation: customAnimation
-        });
-      });
+        action.setFontAwesometSpinnerExample = function () {
+          var $exampleCont = $('.font-awesome-spinner-example');
+          var $showLoadingBtn =$exampleCont.find('.show-loading');
+          var $hideLoadingBtn =$exampleCont.find('.hide-loading');
+          var $panel = $exampleCont.find('.panel');
 
-      $hideLoadingBtn.on('click.showLoading', function () {
-        $panel.ploading({action: 'hide'});
-      });
-    };
-  };
+          $showLoadingBtn.on('click.showLoading', function () {
+            $panel.ploading({
+              action: 'show',
+              spinnerHTML: '<i></i>',
+              spinnerClass: 'fa fa-spinner fa-spin p-loading-fontawesome'
+            });
+          });
 
-  task.runActions = function () {
-    action.setDefaultSpinnerExample();
-    action.setFontAwesometSpinnerExample();
-    action.setCustomizedAnimationExample();
-  };
+          $hideLoadingBtn.on('click.showLoading', function () {
+            $panel.ploading({action: 'hide'});
+          });
+        };
 
-  task.initialize = function () {
-    task.defineActions();
-    task.runActions();
-  };
+        action.setCustomizedAnimationExample = function () {
+          var $exampleCont = $('.customized-animations-example');
+          var $showLoadingBtn =$exampleCont.find('.show-loading');
+          var $hideLoadingBtn =$exampleCont.find('.hide-loading');
+          var $panel = $exampleCont.find('.panel');
 
-  task.initialize();
-})(jQuery);
-</script>
+          $showLoadingBtn.on('click.showLoading', function () {
+            var customAnimation = function ($container, $selectedNode) {
+                $container.fadeIn();
+            };
+
+            $panel.ploading({
+              action: 'show',
+              showAnimation: customAnimation
+            });
+          });
+
+          $hideLoadingBtn.on('click.showLoading', function () {
+            $panel.ploading({action: 'hide'});
+          });
+        };
+      };
+
+      task.runActions = function () {
+        action.setDefaultSpinnerExample();
+        action.setFontAwesometSpinnerExample();
+        action.setCustomizedAnimationExample();
+      };
+
+      task.initialize = function () {
+        task.defineActions();
+        task.runActions();
+      };
+
+      task.initialize();
+    })(jQuery);
+    </script>
+
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-77728829-1', 'auto');
+      ga('send', 'pageview');
+    </script>
   </body>
 </html>
