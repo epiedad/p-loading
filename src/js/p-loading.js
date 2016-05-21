@@ -100,10 +100,17 @@
            pluginPrivateAction.utils = function( utilsSettings ) {
                 var utilsAction = {};
 
-                utilsAction.getContainerId = function() {
+                utilsAction.getPluginContainerId = function() {
                     var containerId = $pluginElement.data( settings.pluginNameSpace + "id" );
 
                     return containerId;
+                };
+
+                utilsAction.getPluginContainer = function() {
+                    var containerId = pluginPrivateAction.utils( { action: "getPluginContainerId" } );
+                    var $container = $( "#" + containerId );
+
+                    return $container;
                 };
 
                 return utilsAction[ utilsSettings.action ]();
@@ -170,8 +177,7 @@
         pluginTask.definePublicActions = function() {
 
             pluginPublicAction.destroy = function() {
-                var containerId = pluginPrivateAction.utils( { action: "getContainerId" } );
-                var $container = $( "#" + containerId );
+                var $container = pluginPrivateAction.utils( { action: "getPluginContainer" } );
 
                 $container.remove();
                 $pluginElement.removeData( settings.pluginNameSpace + "id" );
@@ -184,17 +190,14 @@
             pluginPublicAction.show = function() {
 
                 //Get the container ID of the last plugin's usage in the current element.
-                var containerId = pluginPrivateAction.utils( { action: "getContainerId" } );
-                var containerExist = $( "#" + containerId ).length === 0 ? false : true;
-                var $container;
+                var $container = pluginPrivateAction.utils( { action: "getPluginContainer" } );
+                var containerExist = $container.length === 0 ? false : true;
 
-                if ( containerId && containerExist ) {
-                    $container = $( "#" + containerId );
+                if ( containerExist ) {
                     settings.showAnimation( $container, $pluginElement );
                 } else {
                     pluginPrivateAction.buildPluginMarkup();
-                    containerId = pluginPrivateAction.utils( { action: "getContainerId" } );
-                    $container = $( "#" + containerId );
+                    $container = pluginPrivateAction.utils( { action: "getPluginContainer" } );
                 }
 
                 settings.showAnimation( $container, $pluginElement );
@@ -211,8 +214,7 @@
             pluginPublicAction.hide = function() {
 
                 //Get the container ID of the last plugin's usage in the current element.
-                var containerId = pluginPrivateAction.utils( { action: "getContainerId" } );
-                var $container = $( "#" + containerId );
+                var $container = pluginPrivateAction.utils( { action: "getPluginContainer" } );
 
                 settings.hideAnimation( $container, $pluginElement );
 
