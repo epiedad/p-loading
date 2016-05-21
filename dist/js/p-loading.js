@@ -7,7 +7,7 @@
  *  Under MIT License
  */
 /*
- * jQuery Plugin P-loading v1.0.1
+ * jQuery Plugin P-loading v1.1.0
  * https://github.com/joseshiru/p-loading/
  *
  * Released under the MIT license
@@ -54,7 +54,8 @@
                 destroyAfterHide: false,                         //Destoy the container after it gets hidden
                 idPrefix: "loader",                              //ID prefix of the container
                 pluginNameSpace: "p-loader",                     //Namespace of the plugin used in the data attribute of the selected node
-                maskHolder: true                                 //Add the p-loading-mask class to the selected node
+                maskHolder: true,                                //Add the p-loading-mask class to the selected node
+                useAddOns: []
             };
 
             settings = $.extend( defaults, $.fn.ploading.defaults, options );
@@ -104,7 +105,7 @@
                 renderPlugin();
             };
 
-            pluginPrivateAction.utils = function( utilsSettings ) {
+           pluginPrivateAction.utils = function( utilsSettings ) {
                 var utilsAction = {};
 
                 utilsAction.getContainerId = function() {
@@ -114,6 +115,63 @@
                 };
 
                 return utilsAction[ utilsSettings.action ]();
+           };
+
+           pluginPrivateAction.addOnInstaller = function() {
+                var initialize;
+                var managerAction = {};
+
+                managerAction.getAddOns = function() {
+                    return $.fn.ploading.addOns;
+                };
+
+                //Parameters to send to the plugins
+                managerAction.getParamsToSend = function() {
+                    var params = {
+                        pluginPublicAction: pluginPublicAction,
+                        pluginSettings: settings,
+                        pluginPrivateAction: {
+                            utils: pluginPrivateAction.utils
+                        },
+                        pluginElement: $pluginElement
+                    };
+
+                    return params;
+                };
+
+                managerAction.applyAddOnData = function( addOnData ) {
+                    settings = $.extend( settings, addOnData.pluginSettings );
+                    settings = $.extend( settings, addOnData.pluginPublicAction );
+                };
+
+                managerAction.installAddOn = function() {
+                    var addOns;
+                    var usingAddOns = settings.useAddOns.length > 0;
+
+                    if ( !usingAddOns ) {
+                        return;
+                    }
+
+                    addOns = managerAction.getAddOns();
+
+                    for ( var i = 0, l = settings.useAddOns.length; i < l; i++ ) {
+                        var addOnName = settings.useAddOns[ i ];
+                        var currentAddOn = addOns[ addOnName ];
+                        var addOnExist = currentAddOn ? true : false;
+                        var addOnParams;
+
+                        if ( addOnExist ) {
+                            addOnParams = managerAction.getParamsToSend();
+                            managerAction.applyAddOnData( currentAddOn( addOnParams ) );
+                        }
+                    }
+                };
+
+                initialize = function() {
+                    managerAction.installAddOn();
+                };
+
+                initialize();
            };
         };
 
@@ -184,6 +242,7 @@
 
             //Refresh the settings of the plugin, in case there're new values
             pluginTask.definePluginSettings();
+            pluginPrivateAction.addOnInstaller();
             pluginPublicAction[ settings.action ]();
         };
 
@@ -198,5 +257,7 @@
 
         return $pluginElement;
     };
+
+    $.fn.ploading.addOns = {};
 
 }( jQuery ) );
