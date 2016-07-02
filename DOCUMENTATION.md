@@ -23,7 +23,7 @@ Then include the CSS file in the head tag:
 
 
 ### Actions
-The property "action" of the settings object that is passed as parameter to the ploading plugin, allows us to 
+The property "action" of the settings object that is passed as parameter to the ploading plugin, allowing us to 
 ##### Show spinner
 Use this for show the loading mask in the selected jQuery element.
 This will create all the markup of the mask. 
