@@ -1,4 +1,4 @@
-![alt tag](http://i.imgur.com/M9LqM46.png?1 "P-Loading") [![Build Status](https://travis-ci.org/joseshiru/p-loading.svg?branch=master)](https://travis-ci.org/joseshiru/p-loading.svg?branch=master)
+![alt tag](http://i.imgur.com/M9LqM46.png?1 "P-Loading") [![Build Status](https://travis-ci.org/joseshiru/p-loading.svg?branch=master)](https://travis-ci.org/joseshiru/p-loading.svg?branch=master) [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/joseshiru/p-loading/master/LICENSE)
 
 P-Loading is a powerful, and intuitive jQuery plugin, for faster and easier web development, created by Jose Zuniga, which allows you to include an elegant responsive loading mask with many options of how to customize it.
 
@@ -34,7 +34,7 @@ p-loading/
 └── package.json
 ```
 ### Current version
-  Version: 1.0.2
+  Version: 1.0.1
 
 
 ### Available Plugins (incl. Docs)
