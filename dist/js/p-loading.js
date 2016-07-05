@@ -1,24 +1,16 @@
 /*
- *  p-loading - v1.0.1
+ *  p-loading - v1.1.0
  *  Loading mask plugin for jQuery.
  *  http://joseshiru.github.io/p-loading/
  *
  *  Made by Jose Zuniga
  *  Under MIT License
  */
-/*
- * jQuery Plugin P-loading v1.1.0
- * https://github.com/joseshiru/p-loading/
- *
- * Released under the MIT license
- *
- */
-
 ( function( $ ) {
      "use strict";
 
      $.fn.ploading = function( options ) {
-        var $pluginElement       = this;
+        var $selectedNode       = this;
         var pluginTask           = {};
         var pluginPublicAction   = {};
         var pluginPrivateAction  = {};
@@ -72,7 +64,7 @@
                     var randomNumberId = Math.round( new Date().getTime() + ( Math.random() * 100 ) );
                     var containerId = settings.idPrefix + randomNumberId;
 
-                    $pluginElement.data( settings.pluginNameSpace + "id", containerId );
+                    $selectedNode.data( settings.pluginNameSpace + "id", containerId );
                     $container.prop( "id", containerId );
                     $container.attr( settings.containerAttrs );
                     $container.addClass( settings.containerClass );
@@ -99,7 +91,7 @@
                     //Prevent to display the container without the desire animation
                     $container.hide();
 
-                    $pluginElement.prepend( $container );
+                    $selectedNode.prepend( $container );
                 };
 
                 renderPlugin();
@@ -109,7 +101,7 @@
                 var utilsAction = {};
 
                 utilsAction.getPluginContainerId = function() {
-                    var containerId = $pluginElement.data( settings.pluginNameSpace + "id" );
+                    var containerId = $selectedNode.data( settings.pluginNameSpace + "id" );
 
                     return containerId;
                 };
@@ -140,7 +132,7 @@
                         pluginPrivateAction: {
                             utils: pluginPrivateAction.utils
                         },
-                        pluginElement: $pluginElement
+                        $pluginElement: $selectedNode
                     };
 
                     return params;
@@ -188,7 +180,7 @@
                 var $container = pluginPrivateAction.utils( { action: "getPluginContainer" } );
 
                 $container.remove();
-                $pluginElement.removeData( settings.pluginNameSpace + "id" );
+                $selectedNode.removeData( settings.pluginNameSpace + "id" );
 
                 if ( settings.onDestroyContainer ) {
                     settings.onDestroyContainer();
@@ -202,16 +194,16 @@
                 var containerExist = $container.length === 0 ? false : true;
 
                 if ( containerExist ) {
-                    settings.showAnimation( $container, $pluginElement );
+                    settings.showAnimation( $container, $selectedNode );
                 } else {
                     pluginPrivateAction.buildPluginMarkup();
                     $container = pluginPrivateAction.utils( { action: "getPluginContainer" } );
                 }
 
-                settings.showAnimation( $container, $pluginElement );
+                settings.showAnimation( $container, $selectedNode );
 
                 if ( settings.maskHolder ) {
-                    $pluginElement.addClass( "p-loading-element-mask" );
+                    $selectedNode.addClass( "p-loading-element-mask" );
                 }
 
                 if ( settings.onShowContainer ) {
@@ -224,10 +216,10 @@
                 //Get the container ID of the last plugin's usage in the current element.
                 var $container = pluginPrivateAction.utils( { action: "getPluginContainer" } );
 
-                settings.hideAnimation( $container, $pluginElement );
+                settings.hideAnimation( $container, $selectedNode );
 
                 if ( settings.maskHolder ) {
-                    $pluginElement.removeClass( "p-loading-element-mask" );
+                    $selectedNode.removeClass( "p-loading-element-mask" );
                 }
 
                 if ( settings.onHideContainer ) {
@@ -257,7 +249,7 @@
 
         pluginTask.initialize();
 
-        return $pluginElement;
+        return $selectedNode;
     };
 
     $.fn.ploading.addOns = {};

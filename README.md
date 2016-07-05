@@ -5,6 +5,11 @@ P-Loading is a powerful, and intuitive jQuery plugin, for faster and easier web 
 >How many projects need a loading mask and how many times we create the same functionality again, and again?
 >Don't repeat yourself, use P-Loading.
 
+![alt text](https://s32.postimg.org/avb63a879/plprogress.gif "demo default spinner")
+![alt text](https://s32.postimg.org/f116tc4tx/plprogress.gif "demo progress bar")
+![alt text](https://s31.postimg.org/j43p8kg23/plprogress.gif "demo fontawesome spinner")
+
+
 ### What's included
 
 ```
@@ -29,7 +34,12 @@ p-loading/
 └── package.json
 ```
 ### Current version
-	Version: 1.0.1
+  Version: 1.0.1
+
+
+### Available Plugins (incl. Docs)
++ [PL-Progress. Progress bar](https://github.com/joseshiru/pl-progress)
++ [or build your own … :)](https://github.com/joseshiru/p-loading/blob/master/CREATE_PLUGIN.md)
 
 ### Website
 [http://joseshiru.github.io/p-loading/](http://joseshiru.github.io/p-loading/)

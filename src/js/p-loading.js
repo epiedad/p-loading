@@ -1,11 +1,3 @@
-/*
- * jQuery Plugin P-loading v1.1.0
- * https://github.com/joseshiru/p-loading/
- *
- * Released under the MIT license
- *
- */
-
 ( function( $ ) {
      "use strict";
 
@@ -132,7 +124,7 @@
                         pluginPrivateAction: {
                             utils: pluginPrivateAction.utils
                         },
-                        $selectedNode: $selectedNode
+                        $pluginElement: $selectedNode
                     };
 
                     return params;
