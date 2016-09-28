@@ -1,5 +1,5 @@
 /*
- *  p-loading - v1.1.0
+ *  p-loading - v1.1.1
  *  Loading mask plugin for jQuery.
  *  http://joseshiru.github.io/p-loading/
  *

@@ -16,7 +16,7 @@
   ],
   "main": "src/js/p-loading.js",
   "dependencies": {
-    "jquery": "1"
+    "jquery": ">=1.5.1"
   },
   "ignore": [
     "npm-debug.log",

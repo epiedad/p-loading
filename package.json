@@ -1,6 +1,6 @@
 {
   "name": "p-loading",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Loading mask plugin for jQuery.",
   "main": "dist/js/p-loading.min.js",
   "style": "dist/css/p-loading.min.css",
