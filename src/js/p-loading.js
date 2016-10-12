@@ -1,8 +1,16 @@
+/*
+ * jQuery Plugin P-loading v1.2.0
+ * https://github.com/joseshiru/p-loading/
+ *
+ * Released under the MIT license
+ *
+ */
+
 ( function( $ ) {
      "use strict";
 
      $.fn.ploading = function( options ) {
-        var $selectedNode       = this;
+        var $pluginElement       = this;
         var pluginTask           = {};
         var pluginPublicAction   = {};
         var pluginPrivateAction  = {};
@@ -45,6 +53,16 @@
             settings = $.extend( defaults, $.fn.ploading.defaults, options );
         };
 
+        pluginTask.definePublicVariables = function() {
+            if ( $.fn.ploading.state === "initialized" ) {
+                return;
+            }
+
+            $.fn.ploading.state = "starting";
+            $.fn.ploading.addOnManager = {};
+            $.fn.ploading.addOnManager.events = {};
+        };
+
         pluginTask.definePrivateActions = function() {
             pluginPrivateAction.buildPluginMarkup = function() {
                 var renderPlugin;
@@ -56,7 +74,7 @@
                     var randomNumberId = Math.round( new Date().getTime() + ( Math.random() * 100 ) );
                     var containerId = settings.idPrefix + randomNumberId;
 
-                    $selectedNode.data( settings.pluginNameSpace + "id", containerId );
+                    $pluginElement.data( settings.pluginNameSpace + "id", containerId );
                     $container.prop( "id", containerId );
                     $container.attr( settings.containerAttrs );
                     $container.addClass( settings.containerClass );
@@ -83,7 +101,7 @@
                     //Prevent to display the container without the desire animation
                     $container.hide();
 
-                    $selectedNode.prepend( $container );
+                    $pluginElement.prepend( $container );
                 };
 
                 renderPlugin();
@@ -93,7 +111,7 @@
                 var utilsAction = {};
 
                 utilsAction.getPluginContainerId = function() {
-                    var containerId = $selectedNode.data( settings.pluginNameSpace + "id" );
+                    var containerId = $pluginElement.data( settings.pluginNameSpace + "id" );
 
                     return containerId;
                 };
@@ -105,7 +123,59 @@
                     return $container;
                 };
 
+                utilsAction.setPluginState = function() {
+                    $.fn.ploading.state = utilsSettings.state;
+                };
+
+                utilsAction.getPluginState = function() {
+                    return $.fn.ploading.state;
+                };
+
                 return utilsAction[ utilsSettings.action ]();
+           };
+
+           pluginPrivateAction.events = function() {
+                var events = pluginPrivateAction.events;
+
+                var validEvents = {
+                    "pl:spinner:show": true,
+                    "pl:spinner:hide": true,
+                    "pl:spinner:destroy": true
+                };
+
+                var isInvalidEvent = function( selector ) {
+
+                    //selector without namespace
+                    selector =  selector.indexOf( "." ) === -1 ? selector : selector.substring( 0, selector.indexOf( "." ) );
+
+                    if ( validEvents[ selector ] ) {
+                        return false;
+                    } else {
+                        console.error( "The event " + selector + " doesnt exist" );
+                        return true;
+                    }
+                };
+
+                events.on = function( event, fn ) {
+                    if ( isInvalidEvent( event ) ) {
+                        return;
+                    }
+
+                    return $( $.fn.ploading.addOnManager.events ).on( event, fn );
+                };
+
+                events.off = function( events, selector, handler ) {
+
+                    return $( $.fn.ploading.addOnManager.events ).off( events, selector, handler );
+                };
+
+                events.trigger = function( event, data ) {
+                    if ( isInvalidEvent( event ) ) {
+                        return;
+                    }
+
+                    return $( $.fn.ploading.addOnManager.events ).trigger( event, data );
+                };
            };
 
            pluginPrivateAction.addOnInstaller = function() {
@@ -122,9 +192,10 @@
                         pluginPublicAction: pluginPublicAction,
                         pluginSettings: settings,
                         pluginPrivateAction: {
-                            utils: pluginPrivateAction.utils
+                            utils: pluginPrivateAction.utils,
+                            events: pluginPrivateAction.events
                         },
-                        $pluginElement: $selectedNode
+                        $pluginElement: $pluginElement
                     };
 
                     return params;
@@ -172,10 +243,14 @@
                 var $container = pluginPrivateAction.utils( { action: "getPluginContainer" } );
 
                 $container.remove();
-                $selectedNode.removeData( settings.pluginNameSpace + "id" );
+                $pluginElement.removeData( settings.pluginNameSpace + "id" );
 
                 if ( settings.onDestroyContainer ) {
+
+                    //Support for v1.1
                     settings.onDestroyContainer();
+                    $pluginElement.trigger( "pl:spinner:destroy" );
+                    pluginPrivateAction.events.trigger( "pl:spinner:destroy" );
                 }
             };
 
@@ -186,21 +261,25 @@
                 var containerExist = $container.length === 0 ? false : true;
 
                 if ( containerExist ) {
-                    settings.showAnimation( $container, $selectedNode );
+                    settings.showAnimation( $container, $pluginElement );
                 } else {
                     pluginPrivateAction.buildPluginMarkup();
                     $container = pluginPrivateAction.utils( { action: "getPluginContainer" } );
                 }
 
-                settings.showAnimation( $container, $selectedNode );
+                settings.showAnimation( $container, $pluginElement );
 
                 if ( settings.maskHolder ) {
-                    $selectedNode.addClass( "p-loading-element-mask" );
+                    $pluginElement.addClass( "p-loading-element-mask" );
                 }
 
+                //Support for v1.1
                 if ( settings.onShowContainer ) {
                     settings.onShowContainer();
                 }
+
+                $pluginElement.trigger( "pl:spinner:show" );
+                pluginPrivateAction.events.trigger( "pl:spinner:show" );
             };
 
             pluginPublicAction.hide = function() {
@@ -208,18 +287,25 @@
                 //Get the container ID of the last plugin's usage in the current element.
                 var $container = pluginPrivateAction.utils( { action: "getPluginContainer" } );
 
-                settings.hideAnimation( $container, $selectedNode );
+                settings.hideAnimation( $container, $pluginElement );
 
                 if ( settings.maskHolder ) {
-                    $selectedNode.removeClass( "p-loading-element-mask" );
+                    $pluginElement.removeClass( "p-loading-element-mask" );
                 }
 
+                    //Support for v1.1
                 if ( settings.onHideContainer ) {
                     settings.onHideContainer();
                 }
+                $pluginElement.trigger( "pl:spinner:hide" );
+                pluginPrivateAction.events.trigger( "pl:spinner:hide" );
 
                 if ( settings.destroyAfterHide ) {
+
+                    //Support for v1.1
                     pluginPublicAction.destroy();
+                    $pluginElement.trigger( "pl:spinner:destroy" );
+                    pluginPrivateAction.events.trigger( "pl:spinner:destroy" );
                 }
             };
         };
@@ -228,12 +314,15 @@
 
             //Refresh the settings of the plugin, in case there're new values
             pluginTask.definePluginSettings();
+            pluginPrivateAction.events();
             pluginPrivateAction.addOnInstaller();
+            pluginPrivateAction.utils( { action: "setPluginState", state: "initialized" } );
             pluginPublicAction[ settings.action ]();
         };
 
         pluginTask.initialize = function() {
             pluginTask.definePluginSettings();
+            pluginTask.definePublicVariables();
             pluginTask.definePrivateActions();
             pluginTask.definePublicActions();
             pluginTask.runPlublicAction();
@@ -241,7 +330,7 @@
 
         pluginTask.initialize();
 
-        return $selectedNode;
+        return $pluginElement;
     };
 
     $.fn.ploading.addOns = {};
