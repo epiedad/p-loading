@@ -59,5 +59,6 @@ p-loading/
  * [Tobias and he's beautiful SpinKit](https://github.com/tobiasahlin/SpinKit)
  * [Jose Zuniga Marin](https://github.com/joseshiru)
  * [CSS Loaders](https://github.com/lukehaas/css-loaders)
+ 
 ### Copyright and license
 [MIT License](https://github.com/joseshiru/p-loading/blob/master/LICENSE)
