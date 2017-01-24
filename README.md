@@ -1,9 +1,12 @@
-![alt tag](http://i.imgur.com/M9LqM46.png?1 "P-Loading") [![Build Status](https://travis-ci.org/joseshiru/p-loading.svg?branch=master)](https://travis-ci.org/joseshiru/p-loading.svg?branch=master) [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/joseshiru/p-loading/master/LICENSE)
+![alt tag](http://i.imgur.com/M9LqM46.png?1 "P-Loading") [![Build Status](https://travis-ci.org/joseshiru/p-loading.svg?branch=master)](https://travis-ci.org/joseshiru/p-loading.svg?branch=master) [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/joseshiru/p-loading/master/LICENSE) [![npm version](https://badge.fury.io/js/p-loading.svg)](https://badge.fury.io/js/p-loading)
 
-P-Loading is a powerful, and intuitive jQuery plugin, for faster and easier web development, created by Jose Zuniga, which allows you to include an elegant responsive loading mask with many options of how to customize it and add-ons to install.
+P-Loading is a powerful jQuery plugin, for faster and easier web development, which allows you to have a main  loading mask platform that is able to use many different spinners by installing P-Loading add-ons.
 
 >How many projects need a loading mask and how many times we create the same functionality again, and again?
->Don't repeat yourself, use P-Loading.
+>
+>Don't repeat yourself, use P-Loading and have free choice of use the spinner you want.
+
+*We are currently trying to include all the popular spinners of the web into P-Loading add-ons*
 
 ![alt text](https://s32.postimg.org/avb63a879/plprogress.gif "demo default spinner")
 ![alt text](https://s32.postimg.org/f116tc4tx/plprogress.gif "demo progress bar")
@@ -34,12 +37,14 @@ p-loading/
 └── package.json
 ```
 ### Current version
-  Version: 1.1.1
+  Version: 1.2.0
 
 
 ### Available add-ons (incl. Docs)
 + [PL-Progress. Progress bar](https://github.com/joseshiru/pl-progress)
-+ [or build your own … :)](https://github.com/joseshiru/p-loading/blob/master/CREATE_PLUGIN.md)
++ [PL-Fontawesome. A way how to use Fontawesome icons as spinners](https://github.com/joseshiru/pl-fontawesome)
++ [PL-Spinkit. Spinners based on the Tobias Ahlin's SpinKit ](https://github.com/joseshiru/pl-spinkit)
++ [or build your own :)](https://github.com/joseshiru/p-loading/blob/master/CREATE_PLUGIN.md)
 
 ### Website
 [http://joseshiru.github.io/p-loading/](http://joseshiru.github.io/p-loading/)
@@ -48,12 +53,11 @@ p-loading/
 [https://github.com/joseshiru/p-loading/blob/master/DOCUMENTATION.md](https://github.com/joseshiru/p-loading/blob/master/DOCUMENTATION.md)
 
 ### Contributing
-  Feel free to contribute.
+  We need more contributions, so, your help is well welcomed :)
 
-### Creators
- * Thanks to all the contributors.
- * [Jose Zuniga Marin](https://github.com/joseshiru).
- * CSS Loaders https://github.com/lukehaas/css-loaders
- 
+### Thanks to
+ * [Tobias and he's beautiful SpinKit](https://github.com/tobiasahlin/SpinKit)
+ * [Jose Zuniga Marin](https://github.com/joseshiru)
+ * [CSS Loaders](https://github.com/lukehaas/css-loaders)
 ### Copyright and license
 [MIT License](https://github.com/joseshiru/p-loading/blob/master/LICENSE)
