@@ -47,6 +47,7 @@
                 idPrefix: "loader",                              //ID prefix of the container
                 pluginNameSpace: "p-loader",                     //Namespace of the plugin used in the data attribute of the selected node
                 maskHolder: true,                                //Add the p-loading-mask class to the selected node
+                maskColor: 'rgba(0,0,0,0.6)',                    //The background color of the mask  
                 useAddOns: []
             };
 
@@ -235,6 +236,13 @@
 
                 initialize();
            };
+
+           pluginPrivateAction.changeMaskColor = function() {
+                var containerId = pluginPrivateAction.utils( { action: "getPluginContainerId" } );
+                var $container = $( "#" + containerId );
+
+                $container.css('background-color', settings.maskColor);
+           };
         };
 
         pluginTask.definePublicActions = function() {
@@ -248,8 +256,8 @@
                 if ( settings.onDestroyContainer ) {
 
                     //Support for v1.1
-                    settings.onDestroyContainer();
-                    $pluginElement.trigger( "pl:spinner:destroy" );
+                    settings.onDestroyContainer($container);
+                    $pluginElement.trigger( "pl:spinner:destroy", [$container] );
                     pluginPrivateAction.events.trigger( "pl:spinner:destroy" );
                 }
             };
@@ -275,10 +283,10 @@
 
                 //Support for v1.1
                 if ( settings.onShowContainer ) {
-                    settings.onShowContainer();
+                    settings.onShowContainer( $pluginElement, $container);
                 }
 
-                $pluginElement.trigger( "pl:spinner:show" );
+                $pluginElement.trigger( "pl:spinner:show", [$pluginElement, $container] );
                 pluginPrivateAction.events.trigger( "pl:spinner:show" );
             };
 
@@ -295,17 +303,14 @@
 
                     //Support for v1.1
                 if ( settings.onHideContainer ) {
-                    settings.onHideContainer();
+                    settings.onHideContainer($pluginElement, $container);
                 }
-                $pluginElement.trigger( "pl:spinner:hide" );
+                $pluginElement.trigger( "pl:spinner:hide", [$pluginElement, $container] );
                 pluginPrivateAction.events.trigger( "pl:spinner:hide" );
 
                 if ( settings.destroyAfterHide ) {
 
-                    //Support for v1.1
                     pluginPublicAction.destroy();
-                    $pluginElement.trigger( "pl:spinner:destroy" );
-                    pluginPrivateAction.events.trigger( "pl:spinner:destroy" );
                 }
             };
         };
@@ -316,6 +321,7 @@
             pluginTask.definePluginSettings();
             pluginPrivateAction.events();
             pluginPrivateAction.addOnInstaller();
+            pluginPrivateAction.changeMaskColor();
             pluginPrivateAction.utils( { action: "setPluginState", state: "initialized" } );
             pluginPublicAction[ settings.action ]();
         };
