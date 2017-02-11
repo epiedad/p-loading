@@ -197,34 +197,6 @@ onDestroyContainer: function ($selectedNode) {
 };
 ```
 
-#### hideAnimation ($container, $selectedNode)
-Receives a function that will represent the hide process of the "loading mask" container. Useful when you want to customize the hide animation. Example:
-```
-//Params
-$container: "jQuery object of loading mask container"
-$selectedNode: "jQuery object of selected HTML element, e.g: $('.this-element').ploading(..."
-```
-```
-hideAnimation: function ($container, $selectedNode) {
-    $container.fadeOut();
-};
-```
-Note: jQuery .hide() function is used by default as hide animation.
-
-#### showAnimation ($container, $selectedNode)
-Receives a function that will represent the show process of the "loading mask" container. Useful when you want to customize the show animation. Example:
-```
-//Params
-$container: "jQuery object of loading mask container"
-$selectedNode: "jQuery object of selected HTML element, e.g: $('.this-element').ploading(..."
-```
-```
-showAnimation: function ($container, $selectedNode) {
-    $container.fadeIn();
-};
-```
-Note: jQuery .show() function is used by default as show animation.
-
 #### destroyAfterHide
 Receives a string with a boolean value. If the value is true, then, the "loading mask"s HTML will be destroyed everytime it gets hidden. Example:
 ```
