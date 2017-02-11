@@ -90,6 +90,7 @@ Just take in mind that those settings will be executed automatically each time t
 Property              | Description       | Default value
 -------------         | -------------     | -------------
 action                | Executes a function of the pluginPublicAction object | show
+maskColor             | Color code to be used as the background of the loading mask | "rgba(0,0,0,0.6)"
 containerHTML         | HTML of the container | "<div/>"
 containerAttrs        | Container Attributes and custom attributes (class,id,for,etc) | { }
 containerClass        | CSS classes of the Container | "p-loading-container"
@@ -158,7 +159,7 @@ Receives a string with the desired CSS classes that will have the " loading mask
 spinnerClass: 'my-custom-spinner fa-spin fa-spinner';
 ```
 
-#### onShowContainer ($container, $selectedNode)
+#### onShowContainer ($container, $selectedNode) (Deprecated - use the custom event: pl:spinner:show)
 Receives a function (callback) that will be execute when the container is displayed. Example:
 ```
 //Params
@@ -171,7 +172,7 @@ onShowContainer: function ($container, $selectedNode) {
 };
 ```
 
-#### onHideContainer ($container, $selectedNode)
+#### onHideContainer ($container, $selectedNode) (Deprecated - use the custom event: pl:spinner:hide)
 Receives a function (callback) that will be execute when the container is hidden. Example:
 ```
 //Params
@@ -184,7 +185,7 @@ onHideContainer: function ($container, $selectedNode) {
 };
 ```
 
-#### onDestroyContainer ($selectedNode)
+#### onDestroyContainer ($selectedNode) (Deprecated - use the custom event: pl:spinner:destroy)
 Receives a function (callback) that will be execute when the container is destroyed. Example:
 ```
 //Params
@@ -248,6 +249,50 @@ Receives a boolean value. If the value is true, then, the plugin will add a css 
 ```
 maskHolder: true;
 ```
+### Custom Events
+
+#### After spinner is displayed 
+Triggered after the container is displayed. Example:
+```
+//Params
+e: event
+$container: "jQuery object of loading mask container"
+$selectedNode: "jQuery object of selected HTML element, e.g: $('.this-element').ploading(..."
+```
+```
+$yourElement.on('pl:spinner:show', function ($container, $selectedNode) {
+    console.log('the loading mask is displayed');
+})
+```
+
+#### After the spinner is hidden
+Triggered after the container is hidden. Example:
+```
+//Params
+e: event
+$container: "jQuery object of loading mask container"
+$selectedNode: "jQuery object of selected HTML element, e.g: $('.this-element').ploading(..."
+```
+```
+$yourElement.on('pl:spinner:hide', function ($container, $selectedNode) {
+    console.log('the loading mask is hidden');
+})
+```
+
+#### After the spinner is destroyed
+Triggered after the container is destroyed. Example:
+```
+//Params
+e: event
+$selectedNode: "jQuery object of selected HTML element, e.g: $('.this-element').ploading(..."
+```
+```
+$yourElement.on('pl:spinner:destroy', function ($selectedNode) {
+    console.log('the loading mask is hidden');
+})
+```
+
+
 ### Default Spinners
 By default, P-loading includes 3 spinners http://projects.lukehaas.me/css-loaders/ that are based on CSS3 animations (We named them). Feel free to add support to others spinners.
 
