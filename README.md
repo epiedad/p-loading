@@ -45,12 +45,15 @@ p-loading/
 
 ### Available add-ons (incl. Docs)
 + [PL-Progress. Progress bar](https://github.com/joseshiru/pl-progress)
+
 ![alt text](https://s32.postimg.org/f116tc4tx/plprogress.gif "demo progress bar")
 
 + [PL-Fontawesome. A way how to use Fontawesome icons as spinners](https://github.com/joseshiru/pl-fontawesome)
+ 
 ![alt text](https://s27.postimg.org/cayz1ye5f/pl_fontawesome.gif "demo")
 
 + [PL-Spinkit. Spinners based on the Tobias Ahlin's SpinKit ](https://github.com/joseshiru/pl-spinkit)
+
 ![alt text](https://s10.postimg.org/dwe3uy4p5/pl_spinkit.gif "demo")
 
 + [or build your own :)](https://github.com/joseshiru/p-loading/blob/master/CREATE_PLUGIN.md)
