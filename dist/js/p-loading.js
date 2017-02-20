@@ -329,9 +329,9 @@
             pluginTask.definePluginSettings();
             pluginPrivateAction.events();
             pluginPrivateAction.addOnInstaller();
+            pluginPublicAction[ settings.action ]();
             pluginPrivateAction.changeMaskColor();
             pluginPrivateAction.utils( { action: "setPluginState", state: "initialized" } );
-            pluginPublicAction[ settings.action ]();
         };
 
         pluginTask.initialize = function() {
