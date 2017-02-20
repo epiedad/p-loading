@@ -10,11 +10,11 @@ P-Loading is a powerful jQuery plugin, for faster and easier web development, wh
 
 ![alt text](https://s32.postimg.org/avb63a879/plprogress.gif "demo default spinner")
 ![alt text](https://s32.postimg.org/f116tc4tx/plprogress.gif "demo progress bar")
-![alt text](https://s31.postimg.org/j43p8kg23/plprogress.gif "demo fontawesome spinner")
+![alt text](https://github.com/tobiasahlin/SpinKit "demo Spinkit spinner")
 
 ### Demo with the Spinkit add-on
 
-[https://jsfiddle.net/bupph5v6/3/](https://jsfiddle.net/bupph5v6/3/)
+[https://jsfiddle.net/bupph5v6/5/](https://jsfiddle.net/bupph5v6/5/)
 
 ### What's included
 
